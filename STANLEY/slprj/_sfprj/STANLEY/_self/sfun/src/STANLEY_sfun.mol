@@ -1,0 +1,25 @@
+STANLEY_sfun.o
+c2_STANLEY.o
+STANLEY_sfun_registry.o
+autonomouscodegen_dubins.o
+half_type.o
+-L/Applications/MATLAB_R2022b.app/bin/maci64
+-lmwmorphop_binary_tbb
+-lmwnhood
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwsf_runtime"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lfixedpoint"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lut"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lemlrt"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwstringutil"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwmathutil"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwblas"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwsl_log_load_blocks"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwsimulink"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwsl_sfcn_cov_bridge"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lcovrt"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwlapack"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwsl_simtarget_core"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwsl_simtarget_instrumentation"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwslexec_simlog"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwslccrt"
+"-L/Applications/MATLAB_R2022b.app/bin/maci64" "-lmwipp"

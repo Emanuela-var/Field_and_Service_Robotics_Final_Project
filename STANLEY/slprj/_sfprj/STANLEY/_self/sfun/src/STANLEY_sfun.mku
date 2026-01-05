@@ -1,0 +1,88 @@
+#--------------------------- Tool Specifications -------------------------
+#
+# Modify the following macros to reflect the tools you wish to use for
+# compiling and linking your code.
+#
+CC = /Applications/MATLAB_R2022b.app/bin/mex -R2018a
+LD = $(CC)
+ 
+MODEL     = STANLEY
+TARGET      = sfun
+MODULE_SRCS   = c2_STANLEY.c half_type.c
+MODEL_SRC  = STANLEY_sfun.c
+MODEL_REG = STANLEY_sfun_registry.c
+MAKEFILE    = STANLEY_sfun.mku
+MATLAB_ROOT  = /Applications/MATLAB_R2022b.app/toolbox/stateflow/stateflow/../../..
+BUILDARGS   = 
+#------------------------------ Include/Lib Path ------------------------------
+ 
+USER_INCLUDES = -I"/Users/emanuela/Desktop/FINAL_PROJECT_FSR/STANLEY" 
+AUX_INCLUDES = 
+MLSLSF_INCLUDES  = \
+    -I"/Applications/MATLAB_R2022b.app/extern/include" \
+    -I"/Applications/MATLAB_R2022b.app/simulink/include" \
+    -I"/Applications/MATLAB_R2022b.app/simulink/include/sf_runtime" \
+    -I"/Applications/MATLAB_R2022b.app/stateflow/c/mex/include" \
+    -I"/Applications/MATLAB_R2022b.app/rtw/c/src" \
+    -I"/Users/emanuela/Desktop/FINAL_PROJECT_FSR/STANLEY/slprj/_sfprj/STANLEY/_self/sfun/src" 
+
+THIRD_PARTY_INCLUDES = -I"/Applications/MATLAB_R2022b.app/extern/include/shared_autonomous" 
+
+INCLUDE_PATH = $(USER_INCLUDES) $(AUX_INCLUDES) $(MLSLSF_INCLUDES) $(COMPILER_INCLUDES) $(THIRD_PARTY_INCLUDES)
+ 
+#----------------- Compiler and Linker Options --------------------------------
+ 
+# Optimization Options
+ 
+CC_OPTS =  
+CPP_REQ_DEFINES = -DMATLAB_MEX_FILE
+ 
+# Uncomment this line to move warning level to W4
+# cflags = $(cflags:W3=W4)
+CFLAGS = $(CPP_REQ_DEFINES) $(INCLUDE_PATH) CFLAGS="\$$CFLAGS $(CC_OPTS)"
+ 
+LDFLAGS = -Wl,-rpath,@loader_path  
+LINKLIBS = 
+ 
+AUXLDFLAGS = 
+#----------------------------- Source Files -----------------------------------
+ 
+REQ_SRCS  = $(MODEL_SRC) $(MODEL_REG) $(MODULE_SRCS)
+
+USER_OBJS =
+
+AUX_ABS_OBJS =
+THIRD_PARTY_OBJS     = \
+		autonomouscodegen_dubins.o \
+
+REQ_OBJS = $(REQ_SRCS:.cpp=.o)
+REQ_OBJS2 = $(REQ_OBJS:.c=.o)
+OBJS = $(REQ_OBJS2) $(USER_OBJS) $(AUX_ABS_OBJS) $(THIRD_PARTY_OBJS)
+OBJLIST_FILE = STANLEY_sfun.mol
+SFCLIB = 
+AUX_LNK_OBJS = 
+USER_LIBS = 
+PARLIB = 
+  MAPCSF = /Applications/MATLAB_R2022b.app/tools/maci64/mapcsf
+   # RUN_MAPCSF_ON_UNIX is defined only if MAPCSF exists on this platform.
+   ifneq ($(wildcard $(MAPCSF)),) # run MAPCSF if it exists on this platform
+      RUN_MAPCSF_ON_UNIX =  /Applications/MATLAB_R2022b.app/tools/maci64/mapcsf $@
+   endif
+ 
+#--------------------------------- Rules --------------------------------------
+ 
+MEX_FILE_NAME = $(MODEL)_$(TARGET).mexmaci64
+ 
+ $(MEX_FILE_NAME): $(MAKEFILE) $(OBJS) $(SFCLIB) $(AUX_LNK_OBJS) $(USER_LIBS)
+	@echo ### Linking ...
+	$(CC) -silent LDFLAGS="\$$LDFLAGS $(LDFLAGS)" LINKLIBS="\$$LINKLIBS $(AUXLDFLAGS)" -output $(MEX_FILE_NAME) @$(OBJLIST_FILE) $(AUX_LNK_OBJS) $(USER_LIBS) $(SFCLIB) $(PARLIB) $(IPPLIB) $(THIRD_PARTY_LIBS)
+	$(RUN_MAPCSF_ON_UNIX)
+
+%.o :    %.c
+	$(CC) -c $(CFLAGS) $<
+
+%.o :    %.cpp
+	$(CC) -c $(CFLAGS) $<
+
+autonomouscodegen_dubins.o :	/Applications/MATLAB_R2022b.app/toolbox/shared/autonomous/builtins/libsrc/autonomouscodegen/dubins/autonomouscodegen_dubins.cpp
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2022b.app/toolbox/shared/autonomous/builtins/libsrc/autonomouscodegen/dubins/autonomouscodegen_dubins.cpp
