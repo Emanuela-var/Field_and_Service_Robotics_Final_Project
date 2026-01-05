@@ -1,12 +1,7 @@
 # 🚲 Autonomous Bicycle Parking
 
 <div align="center">
-
-![MATLAB](https://img.shields.io/badge/MATLAB-R2024a-orange?style=for-the-badge&logo=mathworks)
-![Simulink](https://img.shields.io/badge/Simulink-Supported-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-Academic-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
-
+  
 **A comprehensive autonomous parking system using bicycle kinematic model with multiple control strategies**
 
 *Field and Service Robotics - Final Project*
@@ -277,20 +272,6 @@ All controllers successfully navigate the parking environment with obstacles. Th
 
 ---
 
-## 👥 Authors
-
-| Name | Student ID |
-|------|------------|
-| **Serena Catapano** | P38000270 |
-| **Emanuela Varone** | P38000284 |
-
-**Course**: Field and Service Robotics  
-**Institution**: Università degli Studi di Napoli Federico II  
-**Department**: Dipartimento di Ingegneria Elettrica e Tecnologie dell'Informazione  
-**Program**: Corso di Laurea in Ingegneria dell'Automazione e Robotica
-
----
-
 ## 📚 References
 
 1. Aggor, J. (2023). *Exploring path planning with RRT\* and visualization in Python*. Medium.
@@ -311,6 +292,5 @@ This project is developed for academic purposes as part of the Field and Service
 
 <div align="center">
 
-**⭐ If you find this project useful, please consider giving it a star! ⭐**
 
 </div>
