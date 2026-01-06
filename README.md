@@ -23,7 +23,6 @@
 - [Usage](#-usage)
 - [Performance Comparison](#-performance-comparison)
 - [Results](#-results)
-- [Authors](#-authors)
 - [References](#-references)
 
 ---
